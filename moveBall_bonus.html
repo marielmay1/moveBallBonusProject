@@ -1,0 +1,127 @@
+<div id="ball1" style="
+  z-index:1;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#2f802f"></div>
+
+<div id="ball2" style="
+  z-index:2;
+  position:absolute;
+  left:80px;
+  top:160px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#a02194"></div>
+
+<div id="ball3" style="
+  z-index:3;
+  position:absolute;
+  left:60px;
+  top:120px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#e0c520"></div>
+
+<div id="ball4" style="
+  z-index:4;
+  position:absolute;
+  left:20px;
+  top:40px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#060706"></div>
+
+<div id="ball5" style="
+  z-index:5;
+  position:absolute;
+  left:70px;
+  top:20px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#2784d7"></div>
+<script>
+
+    let ball1 = {
+        positionX: 0,
+        directionX: 1,
+        positionY: 0,
+        directionY: 1,
+        velocityX: 20,
+        velocityY: 15,
+        element: document.getElementById('ball1')
+    }
+    let ball2 = {
+        positionX: 80,
+        directionX: 1,
+        positionY: 160,
+        directionY: 1,
+        velocityX: 60,
+        velocityY: 80,
+        element: document.getElementById('ball2')
+    }
+    let ball3 = {
+        positionX: 60,
+        directionX: 1,
+        positionY: 120,
+        directionY: 1,
+        velocityX: 20,
+        velocityY: 45,
+        element: document.getElementById('ball3')
+    }
+    let ball4 = {
+        positionX: 20,
+        directionX: 1,
+        positionY: 40,
+        directionY: 1,
+        velocityX: 40,
+        velocityY: 30,
+        element: document.getElementById('ball4')
+    }
+    let ball5 = {
+        positionX: 70,
+        directionX: 1,
+        positionY: 20,
+        directionY: 1,
+        velocityX: 25,
+        velocityY: 50,
+        element: document.getElementById('ball5')
+    }
+
+
+    // YOUR CODE
+    function moveBall(ball){
+        if(ball.positionX + 50 >= window.innerWidth){
+            ball.directionX = -1
+        }
+        if(ball.positionX <= 0){
+            ball.directionX = 1
+        }
+        if(ball.positionY + 50 >= window.innerHeight){
+            ball.directionY = -1
+        }
+        if(ball.positionY <= 0){
+            ball.directionY = 1
+        }
+        ball.positionX += ball.velocityX * ball.directionX
+        ball.positionY += ball.velocityY * ball.directionY
+        ball.element.style.left = ball.positionX + 'px'
+        ball.element.style.top = ball.positionY + 'px'
+    }
+    function moveBalls(){
+        moveBall(ball1);
+        moveBall(ball2);
+        moveBall(ball3);
+        moveBall(ball4);
+        moveBall(ball5);
+    }
+    // ----------------
+    setInterval(moveBalls, 50)
+</script>
